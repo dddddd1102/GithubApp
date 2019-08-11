@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="57dp">
+
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+               android:contentDescription="@string/app_name"
+               android:src="@drawable/ic_user"
+               android:id="@+id/iv_edit"
+               android:layout_margin="@dimen/content_space_2x"/>
+
+    <View android:layout_width="1px" android:layout_height="56dp"
+          android:background="@color/qmui_config_color_white"
+          android:layout_toEndOf="@+id/iv_edit"/>
+
+    <View android:layout_width="match_parent" android:layout_height="1px"
+          android:layout_below="@+id/iv_edit"
+          android:background="@color/qmui_config_color_white"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:id="@+id/tv_hint"
+              android:layout_toEndOf="@+id/iv_edit"
+              android:layout_marginTop="2dp"
+              android:layout_marginStart="@dimen/content_space_2x"
+              android:layout_marginEnd="@dimen/content_space_2x"
+              android:text="@string/login_username"
+              android:textColor="@color/qmui_config_color_50_white"/>
+
+    <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:layout_marginStart="@dimen/content_space_2x"
+              android:layout_marginEnd="@dimen/content_space_2x"
+              android:layout_marginBottom="1dp"
+              android:textColor="@color/color_white"
+              android:background="@android:color/transparent"
+              android:layout_toEndOf="@+id/iv_edit"
+              android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>
