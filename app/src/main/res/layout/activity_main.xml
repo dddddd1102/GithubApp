@@ -7,7 +7,18 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
+    <include layout="@layout/layout_top"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintVertical_bias="0.06"
+             android:layout_marginStart="16dp"
+             android:layout_marginEnd="16dp"
+             app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+    <Button
+            android:id="@+id/btn_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"

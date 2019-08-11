@@ -1,20 +1,24 @@
 package com.dd.githubapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_user.*
 
-class MainActivity : AppCompatActivity() {
+class UserActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_user)
+        initView()
+    }
+
+    private fun initView() {
         QMUIStatusBarHelper.setStatusBarLightMode(this)
         QMUIStatusBarHelper.translucent(this)
-        btn_test.setOnClickListener {
-            startActivity(Intent(this, UserActivity::class.java))
-        }
+        tv_user.text = "DAI DONG"
+        tv_nickname.text = "daidong"
+        BuildConfig.APPLICATION_ID
     }
 }

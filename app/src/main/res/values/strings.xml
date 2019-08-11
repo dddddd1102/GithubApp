@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GithubApp</string>
+    <string name="user_follow">Follow</string>
+    <string name="user_sponsor">Sponsor</string>
 </resources>
