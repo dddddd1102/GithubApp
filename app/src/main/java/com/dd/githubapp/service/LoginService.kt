@@ -1,7 +1,8 @@
 package com.dd.githubapp.service
 
-import io.reactivex.Observer
-import retrofit2.http.Body
+import com.dd.githubapp.model.User
+import io.reactivex.Observable
+import retrofit2.http.GET
 
 /**
  * GithubApp
@@ -11,4 +12,6 @@ import retrofit2.http.Body
  */
 interface LoginService {
 
+    @GET("/user")
+    fun login(): Observable<User>
 }

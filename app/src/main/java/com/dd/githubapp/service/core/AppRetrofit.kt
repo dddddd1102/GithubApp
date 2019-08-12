@@ -1,6 +1,8 @@
 package com.dd.githubapp.service.core
 
 import android.text.TextUtils
+import android.util.Base64
+import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -17,7 +19,7 @@ import java.util.concurrent.TimeUnit
  */
 class AppRetrofit {
 
-    val baseUrl = "https://api.github.com/"
+    private val baseUrl = "https://api.github.com"
 
     fun createRetrofit() {
         val okHttpClient = OkHttpClient.Builder()
@@ -25,16 +27,44 @@ class AppRetrofit {
             .addInterceptor(BaseInterceptor())
             .addNetworkInterceptor(NetworkInterceptor())
             .build()
-
         val builder = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
+    }
 
+    companion object {
+        fun <S> createRetrofit(serviceClass: Class<S>, username: String, password: String): S {
+            val credentials = "$username:$password"
+            val basic = "Basic " + Base64.encodeToString(credentials.toByteArray(), Base64.NO_WRAP)
+            Log.d("AppRetrofit", "basic=$basic")
+            val okHttpClient = OkHttpClient.Builder()
+                .connectTimeout(2000, TimeUnit.MILLISECONDS)
+                .addInterceptor(BaseAuthInterceptor(basic))
+                .build()
+            val builder = Retrofit.Builder()
+                .baseUrl("https://api.github.com")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+            return builder.create(serviceClass)
+        }
+    }
 
+    private class BaseAuthInterceptor(private val basic: String) : Interceptor {
 
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val origin = chain.request()
+            val requestBuilder = origin.newBuilder()
+                .header("Authorization", basic)
+                .header("Accept", "application/vnd.github.v3+json")
+                .method(origin.method(), origin.body())
+            val request = requestBuilder.build()
+            return chain.proceed(request)
+        }
     }
 
     private class BaseInterceptor : Interceptor {

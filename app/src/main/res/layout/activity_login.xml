@@ -38,6 +38,7 @@
             android:layout_marginEnd="36dp"
             app:editIcon="@drawable/ic_user"
             app:editHint="@string/login_username"
+            app:editType="text"
             android:layout_marginTop="@dimen/content_space_2x"
     />
 
@@ -49,12 +50,14 @@
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             app:editHint="@string/login_password"
+            app:editType="password"
             app:editIcon="@drawable/ic_password"
             android:layout_marginTop="@dimen/content_space_2x"
     />
 
 
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"

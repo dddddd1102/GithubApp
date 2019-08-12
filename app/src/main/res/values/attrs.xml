@@ -4,5 +4,9 @@
     <declare-styleable name="EditLayout">
         <attr name="editIcon" format="reference"/>
         <attr name="editHint" format="string|reference"/>
+        <attr name="editType" format="enum">
+            <enum name="password" value="0"/>
+            <enum name="text" value="1"/>
+        </attr>
     </declare-styleable>
 </resources>
