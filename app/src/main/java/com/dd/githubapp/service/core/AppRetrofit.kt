@@ -36,6 +36,9 @@ class AppRetrofit {
     }
 
     companion object {
+        /**
+         * 创建登录使用
+         */
         fun <S> createRetrofit(serviceClass: Class<S>, username: String, password: String): S {
             val credentials = "$username:$password"
             val basic = "Basic " + Base64.encodeToString(credentials.toByteArray(), Base64.NO_WRAP)
@@ -51,6 +54,18 @@ class AppRetrofit {
                 .client(okHttpClient)
                 .build()
             return builder.create(serviceClass)
+        }
+
+        fun createRetrofit(): Retrofit {
+            val okHttpClient = OkHttpClient.Builder()
+                .connectTimeout(2000, TimeUnit.MILLISECONDS)
+                .build()
+            return Retrofit.Builder()
+                .baseUrl("https://api.github.com")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
         }
     }
 
