@@ -1,7 +1,5 @@
 package com.dd.githubapp.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 
@@ -11,7 +9,7 @@ import com.google.gson.annotations.SerializedName
  * @author    daidong
  *
  */
-@Entity(tableName = "users")
+//@Entity(tableName = "users")
 data class User(
     @SerializedName("avatar_url")
     val avatarUrl: String,
@@ -47,7 +45,7 @@ data class User(
     val hireable: Any,
     @SerializedName("html_url")
     val htmlUrl: String,
-    @PrimaryKey
+//    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("location")
