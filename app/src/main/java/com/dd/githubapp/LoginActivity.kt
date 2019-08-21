@@ -33,11 +33,11 @@ class LoginActivity : BasicActivity() {
 
     private fun checkValue(username: String, password: String): Boolean {
         if (TextUtils.isEmpty(username)) {
-            Toast.makeText(this, "用户名不能为空！", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.login_require_username, Toast.LENGTH_SHORT).show()
             return false
         }
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "密码不能为空！", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.login_require_password, Toast.LENGTH_SHORT).show()
             return false
         }
         return true
