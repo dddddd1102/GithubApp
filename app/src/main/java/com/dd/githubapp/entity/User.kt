@@ -1,5 +1,6 @@
-package com.dd.githubapp.model
+package com.dd.githubapp.entity
 
+import com.dd.githubapp.common.anno.PoKo
 import com.google.gson.annotations.SerializedName
 
 
@@ -9,81 +10,80 @@ import com.google.gson.annotations.SerializedName
  * @author    daidong
  *
  */
-//@Entity(tableName = "users")
+@PoKo
 data class User(
     @SerializedName("avatar_url")
-    val avatarUrl: String,
+    var avatarUrl: String,
     @SerializedName("bio")
-    val bio: String,
+    var bio: String?,
     @SerializedName("blog")
-    val blog: String,
+    var blog: String?,
     @SerializedName("collaborators")
-    val collaborators: Int,
+    var collaborators: Int,
     @SerializedName("company")
-    val company: Any,
+    var company: String?,
     @SerializedName("created_at")
-    val createdAt: String,
+    var createdAt: String,
     @SerializedName("disk_usage")
-    val diskUsage: Int,
+    var diskUsage: Int,
     @SerializedName("email")
-    val email: Any,
+    var email: String?,
     @SerializedName("events_url")
-    val eventsUrl: String,
+    var eventsUrl: String,
     @SerializedName("followers")
-    val followers: Int,
+    var followers: Int,
     @SerializedName("followers_url")
-    val followersUrl: String,
+    var followersUrl: String,
     @SerializedName("following")
-    val following: Int,
+    var following: Int,
     @SerializedName("following_url")
-    val followingUrl: String,
+    var followingUrl: String,
     @SerializedName("gists_url")
-    val gistsUrl: String,
+    var gistsUrl: String,
     @SerializedName("gravatar_id")
-    val gravatarId: String,
+    var gravatarId: String,
     @SerializedName("hireable")
-    val hireable: Any,
+    var hireable: Any,
     @SerializedName("html_url")
-    val htmlUrl: String,
-//    @PrimaryKey
+    var htmlUrl: String,
     @SerializedName("id")
-    val id: Int,
+    var id: Int,
     @SerializedName("location")
-    val location: String,
+    var location: String,
     @SerializedName("login")
-    val login: String,
+    var login: String,
     @SerializedName("name")
-    val name: String,
+    var name: String?,
     @SerializedName("node_id")
-    val nodeId: String,
+    var nodeId: String,
     @SerializedName("organizations_url")
-    val organizationsUrl: String,
+    var organizationsUrl: String,
     @SerializedName("owned_private_repos")
-    val ownedPrivateRepos: Int,
+    var ownedPrivateRepos: Int,
     @SerializedName("private_gists")
-    val privateGists: Int,
+    var privateGists: Int,
     @SerializedName("public_gists")
-    val publicGists: Int,
+    var publicGists: Int,
     @SerializedName("public_repos")
-    val publicRepos: Int,
+    var publicRepos: Int,
     @SerializedName("received_events_url")
-    val receivedEventsUrl: String,
+    var receivedEventsUrl: String,
     @SerializedName("repos_url")
-    val reposUrl: String,
+    var reposUrl: String,
     @SerializedName("site_admin")
-    val siteAdmin: Boolean,
+    var siteAdmin: Boolean,
     @SerializedName("starred_url")
-    val starredUrl: String,
+    var starredUrl: String,
     @SerializedName("subscriptions_url")
-    val subscriptionsUrl: String,
+    var subscriptionsUrl: String,
     @SerializedName("total_private_repos")
-    val totalPrivateRepos: Int,
+    var totalPrivateRepos: Int,
     @SerializedName("two_factor_authentication")
-    val twoFactorAuthentication: Boolean,
+    var twoFactorAuthentication: Boolean,
     @SerializedName("type")
-    val type: String,
+    var type: String,
     @SerializedName("updated_at")
-    val updatedAt: String,
+    var updatedAt: String,
     @SerializedName("url")
-    val url: String
+    var url: String
 )

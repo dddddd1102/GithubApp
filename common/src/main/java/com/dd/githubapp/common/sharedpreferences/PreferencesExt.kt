@@ -1,4 +1,4 @@
-package com.dd.githubapp.common
+package com.dd.githubapp.common.sharedpreferences
 
 import android.content.Context
 import kotlin.IllegalArgumentException
@@ -26,6 +26,8 @@ class Preference<T>(val context: Context, val name: String, val default: T, val 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
         putPreference(name, value)
     }
+
+    private fun findProperName(property: KProperty<*>) = if (name.isEmpty()) property.name else name
 
     private fun findPreference(key: String): T {
         return when (default) {

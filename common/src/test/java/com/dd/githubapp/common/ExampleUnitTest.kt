@@ -1,5 +1,7 @@
 package com.dd.githubapp.common
 
+import com.dd.githubapp.common.ext.otherwise
+import com.dd.githubapp.common.ext.yes
 import org.junit.Assert
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.dd.githubapp.model.db
+package com.dd.githubapp.entity.db
 
 
 /**

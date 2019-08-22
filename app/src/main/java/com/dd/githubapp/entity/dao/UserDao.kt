@@ -1,4 +1,4 @@
-package com.dd.githubapp.model.dao
+package com.dd.githubapp.entity.dao
 
 
 /**

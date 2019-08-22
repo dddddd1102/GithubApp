@@ -1,4 +1,4 @@
-package com.dd.githubapp.common
+package com.dd.githubapp.common.ext
 
 /**
  * GithubApp

@@ -7,19 +7,24 @@ import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import com.dd.githubapp.mvp.impl.BaseActivity
+import com.dd.githubapp.presenter.LoginPresenter
 import com.dd.githubapp.service.LoginService
 import com.dd.githubapp.service.core.AppRetrofit
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.qmuiteam.qmui.widget.dialog.QMUITipDialog
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : BasicActivity() {
+class LoginActivity : BaseActivity<LoginPresenter>() {
 
     private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        QMUIStatusBarHelper.setStatusBarLightMode(this)
+        QMUIStatusBarHelper.translucent(this)
         setContentView(R.layout.activity_login)
 
         btn_login.setOnClickListener {

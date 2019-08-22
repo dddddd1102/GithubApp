@@ -25,7 +25,7 @@ class AppRetrofit {
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(2000, TimeUnit.MILLISECONDS)
             .addInterceptor(BaseInterceptor())
-            .addNetworkInterceptor(NetworkInterceptor())
+//            .addNetworkInterceptor(NetworkInterceptor())
             .build()
         val builder = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -76,7 +76,7 @@ class AppRetrofit {
             val requestBuilder = origin.newBuilder()
                 .header("Authorization", basic)
                 .header("Accept", "application/vnd.github.v3+json")
-                .method(origin.method(), origin.body())
+//                .method(origin.method(), origin.body())
             val request = requestBuilder.build()
             return chain.proceed(request)
         }
@@ -90,25 +90,25 @@ class AppRetrofit {
         }
     }
 
-    private class NetworkInterceptor : Interceptor {
-        val cacheMaxAge = 4 * 7 * 24 * 60 * 60
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val request = chain.request()
-            val originResponse = chain.proceed(request)
-            var requestCacheControl = request.cacheControl().toString()
-            val forceNetwork = request.header("forceNetWork")
-            if (!TextUtils.isEmpty(forceNetwork)) {
-                requestCacheControl = "public, max-age=$cacheMaxAge"
-            }
-            return if (TextUtils.isEmpty(requestCacheControl)) {
-                originResponse
-            } else {
-                originResponse.newBuilder()
-                    .header("Cache-Control", requestCacheControl)
-                    .removeHeader("Pragma")
-                    .build()
-            }
-        }
-    }
+//    private class NetworkInterceptor : Interceptor {
+//        val cacheMaxAge = 4 * 7 * 24 * 60 * 60
+//        override fun intercept(chain: Interceptor.Chain): Response {
+//            val request = chain.request()
+//            val originResponse = chain.proceed(request)
+////            var requestCacheControl = request.cacheControl().toString()
+//            val forceNetwork = request.header("forceNetWork")
+//            if (!TextUtils.isEmpty(forceNetwork)) {
+//                requestCacheControl = "public, max-age=$cacheMaxAge"
+//            }
+//            return if (TextUtils.isEmpty(requestCacheControl)) {
+//                originResponse
+//            } else {
+//                originResponse.newBuilder()
+//                    .header("Cache-Control", requestCacheControl)
+//                    .removeHeader("Pragma")
+//                    .build()
+//            }
+//        }
+//    }
 
 }
