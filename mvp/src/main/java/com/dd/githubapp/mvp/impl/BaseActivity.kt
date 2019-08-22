@@ -2,11 +2,10 @@ package com.dd.githubapp.mvp.impl
 
 import android.content.res.Configuration
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import com.dd.githubapp.mvp.IMvpView
 import com.dd.githubapp.mvp.IPresenter
 import java.lang.reflect.ParameterizedType
-import java.lang.reflect.Type
 import kotlin.reflect.KClass
 import kotlin.reflect.full.isSubclassOf
 import kotlin.reflect.full.primaryConstructor
@@ -18,8 +17,9 @@ import kotlin.reflect.jvm.jvmErasure
  * @author    daidong
  *
  */
-abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P>, Fragment() {
-    override val presenter: P
+abstract class BaseActivity<out P : BasePresenter<BaseActivity<P>>> : AppCompatActivity(), IMvpView<P> {
+
+    final override val presenter: P
 
     init {
         presenter = createPresenterKt()
@@ -28,7 +28,7 @@ abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P
 
     private fun createPresenterKt(): P {
         sequence {
-            var thisClass: KClass<*> = this@BaseFragment::class
+            var thisClass: KClass<*> = this@BaseActivity::class
             while (true) {
                 yield(thisClass.supertypes)
                 thisClass = thisClass.supertypes.firstOrNull()?.jvmErasure ?: break
@@ -44,7 +44,7 @@ abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P
 
     private fun createPresenter(): P {
         sequence {
-            var thisClass: Class<*> = this@BaseFragment.javaClass
+            var thisClass: Class<*> = this@BaseActivity.javaClass
             while (true) {
                 yield(thisClass.genericSuperclass)
                 thisClass = thisClass.superclass ?: break
@@ -96,10 +96,16 @@ abstract class BaseFragment<out P : BasePresenter<BaseFragment<P>>> : IMvpView<P
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        presenter.onConfigurationChanged(newConfig)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        onViewStateRestored(savedInstanceState)
         presenter.onViewStateRestored(savedInstanceState)
     }
 }
-
-class MainFragment : BaseFragment<MainPresenter>()
-class MainPresenter : BasePresenter<MainFragment>()
