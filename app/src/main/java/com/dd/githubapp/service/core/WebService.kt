@@ -4,6 +4,7 @@ import com.dd.githubapp.AppContext
 import com.dd.githubapp.common.ext.ensureDir
 import com.dd.githubapp.service.interceptor.AcceptInterceptor
 import com.dd.githubapp.service.interceptor.AuthInterceptor
+import io.reactivex.schedulers.Schedulers
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -31,7 +32,7 @@ val retrofit by lazy {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
         .client(
             OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)

@@ -1,7 +1,9 @@
 package com.dd.githubapp.entity
 
+import android.os.Parcelable
 import com.dd.githubapp.common.anno.PoKo
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 
 /**
@@ -11,6 +13,7 @@ import com.google.gson.annotations.SerializedName
  *
  */
 @PoKo
+@Parcelize
 data class User(
     @SerializedName("avatar_url")
     var avatarUrl: String,
@@ -43,7 +46,7 @@ data class User(
     @SerializedName("gravatar_id")
     var gravatarId: String,
     @SerializedName("hireable")
-    var hireable: Any,
+    var hireable: String?,
     @SerializedName("html_url")
     var htmlUrl: String,
     @SerializedName("id")
@@ -86,4 +89,4 @@ data class User(
     var updatedAt: String,
     @SerializedName("url")
     var url: String
-)
+) : Parcelable

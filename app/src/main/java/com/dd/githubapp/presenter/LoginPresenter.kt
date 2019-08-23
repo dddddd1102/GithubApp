@@ -1,5 +1,6 @@
 package com.dd.githubapp.presenter
 
+import android.util.Log
 import com.dd.githubapp.BuildConfig
 import com.dd.githubapp.LoginActivity
 import com.dd.githubapp.model.AccountManager
@@ -15,7 +16,6 @@ import com.dd.githubapp.mvp.impl.BasePresenter
 class LoginPresenter : BasePresenter<LoginActivity>() {
 
     fun doLogin(name: String, password: String) {
-
         AccountManager.username = name
         AccountManager.password = password
         view.onLoginStart()

@@ -16,7 +16,7 @@ class AcceptInterceptor : Interceptor {
         val origin = chain.request()
         return chain.proceed(origin.newBuilder()
             .apply {
-                header("accept", "application/vnd.github.v3.full+json,${origin.header("accept") ?: ""}")
+                header("accept", "application/vnd.github.v3.full+json, ${origin.header("accept") ?: ""}")
             }
             .build())
     }

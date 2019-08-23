@@ -68,11 +68,11 @@ object AccountManager {
 
     fun isLoggedin(): Boolean = token.isNotEmpty()
 
-    fun login() = AuthService.createAuthorization(AuthorizationReq())
+    fun login(): Observable<Unit> = AuthService.createAuthorization(AuthorizationReq())
         .doOnNext {
             if (it.token.isEmpty()) throw AccountException(it)
         }
-        .retryWhen {
+        .retryWhen { it ->
             it.flatMap {
                 if (it is AccountException) {
                     AuthService.deleteAuthorization(it.authorizationRsp.id)

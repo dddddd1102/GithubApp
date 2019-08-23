@@ -1,6 +1,7 @@
 package com.dd.githubapp.service.interceptor
 
 import android.util.Base64
+import android.util.Log
 import com.dd.githubapp.model.AccountManager
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -19,8 +20,9 @@ class AuthInterceptor : Interceptor {
                 when {
                     origin.url.pathSegments.contains("authorizations") -> {
                         val userCredentials = AccountManager.username + ":" + AccountManager.password
+                        Log.d("OkHttp", "userInfo=>$userCredentials")
                         val auth =
-                            "Basic " + String(Base64.encode(userCredentials.toByteArray(), Base64.DEFAULT)).trim()
+                            "Basic " + Base64.encodeToString(userCredentials.toByteArray(), Base64.NO_WRAP)
                         header("Authorization", auth)
                     }
                     AccountManager.isLoggedin() -> {
