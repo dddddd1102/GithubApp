@@ -25,7 +25,7 @@ class EditLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     private val edtInput: EditText
 
-    val editText: String
+    var editText: String = ""
         get() = edtInput.text.toString()
 
     init {
@@ -51,5 +51,8 @@ class EditLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
         a.recycle()
     }
 
+    open fun setText(text: String) {
+        edtInput.setText(text)
+    }
 
 }

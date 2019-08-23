@@ -20,6 +20,14 @@ import java.lang.Exception
  * @author    daidong
  *
  */
+
+interface OnAccountStateChangeListener {
+
+    fun onLogin(user: User)
+
+    fun onLogout()
+}
+
 object AccountManager {
     var authId by pref(-1)
     var username by pref("")
@@ -44,11 +52,23 @@ object AccountManager {
             field = value
         }
 
+    val onAccountStateChangeListeners = ArrayList<OnAccountStateChangeListener>()
+
+    private fun notifyLogin(user: User) {
+        onAccountStateChangeListeners.forEach {
+            it.onLogin(user)
+        }
+    }
+
+    private fun notifyLogout() {
+        onAccountStateChangeListeners.forEach {
+            it.onLogout()
+        }
+    }
+
     fun isLoggedin(): Boolean = token.isNotEmpty()
 
     fun login() = AuthService.createAuthorization(AuthorizationReq())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
         .doOnNext {
             if (it.token.isEmpty()) throw AccountException(it)
         }
@@ -68,7 +88,10 @@ object AccountManager {
         }
         .map {
             currentUser = it
+            notifyLogin(it)
         }
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
 
     fun logout() = AuthService.deleteAuthorization(authId)
         .doOnNext {
@@ -76,10 +99,13 @@ object AccountManager {
                 authId = -1
                 token = ""
                 currentUser = null
+                notifyLogout()
             } else {
                 throw HttpException(it)
             }
         }
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
 
     class AccountException(val authorizationRsp: AuthorizationRsp) : Exception("Already logged in.")
 
