@@ -1,10 +1,11 @@
-package com.dd.githubapp
+package com.dd.githubapp.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import com.dd.githubapp.R
 import com.dd.githubapp.common.ext.otherwise
 import com.dd.githubapp.common.ext.yes
 import com.dd.githubapp.model.AccountManager
@@ -29,7 +30,7 @@ class SplashActivity : BasicActivity() {
             finish()
         }
         if (it.what == MSG_HOME) {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -43,10 +44,16 @@ class SplashActivity : BasicActivity() {
 
         AccountManager.isLogin().yes {
             Log.d("SplashActivity", "isLogin=true")
-            handler.sendEmptyMessageDelayed(MSG_HOME, DELAY_TIME)
+            handler.sendEmptyMessageDelayed(
+                MSG_HOME,
+                DELAY_TIME
+            )
         }.otherwise {
             Log.d("SplashActivity", "isLogin=false")
-            handler.sendEmptyMessageDelayed(MSG_LOGIN, DELAY_TIME)
+            handler.sendEmptyMessageDelayed(
+                MSG_LOGIN,
+                DELAY_TIME
+            )
         }
     }
 }

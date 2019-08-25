@@ -1,8 +1,9 @@
-package com.dd.githubapp
+package com.dd.githubapp.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import com.dd.githubapp.R
 import com.dd.githubapp.common.ext.otherwise
 import com.dd.githubapp.common.ext.yes
 import com.dd.githubapp.mvp.impl.BaseActivity
@@ -54,7 +55,7 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
 
     fun onLoginSuccess() {
         toast("登录成功")
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }

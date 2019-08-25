@@ -36,7 +36,7 @@ object AccountManager {
 
     private var userJson by pref("")
 
-    private var currentUser: User? = null
+    var currentUser: User? = null
         get() {
             if (field == null && userJson.isNotEmpty()) {
                 field = Gson().fromJson<User>(userJson)

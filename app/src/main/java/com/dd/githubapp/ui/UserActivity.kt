@@ -1,7 +1,9 @@
-package com.dd.githubapp
+package com.dd.githubapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dd.githubapp.BuildConfig
+import com.dd.githubapp.R
 import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : AppCompatActivity() {
