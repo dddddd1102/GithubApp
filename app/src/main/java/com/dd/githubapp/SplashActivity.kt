@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
+import com.dd.githubapp.common.ext.otherwise
+import com.dd.githubapp.common.ext.yes
+import com.dd.githubapp.model.AccountManager
 
 class SplashActivity : BasicActivity() {
 
@@ -25,7 +29,9 @@ class SplashActivity : BasicActivity() {
             finish()
         }
         if (it.what == MSG_HOME) {
-
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
         return@Callback false
     })
@@ -35,18 +41,12 @@ class SplashActivity : BasicActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // TODO 判断是否已经登录，若未登录直接进入登录界面，若已经登录则进入主页
-//        UserDatabase.getInstance(this).userDao().findLoginUser().subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//                Log.d(TAG, "user: $it")
-//
-//            }, {
-//                Log.d(TAG, "error: ${it.localizedMessage}");
-//            }, {
-//                Log.d(TAG, "complete!")
-//            })
-        handler.sendEmptyMessageDelayed(MSG_LOGIN, DELAY_TIME)
-
+        AccountManager.isLogin().yes {
+            Log.d("SplashActivity", "isLogin=true")
+            handler.sendEmptyMessageDelayed(MSG_HOME, DELAY_TIME)
+        }.otherwise {
+            Log.d("SplashActivity", "isLogin=false")
+            handler.sendEmptyMessageDelayed(MSG_LOGIN, DELAY_TIME)
+        }
     }
 }

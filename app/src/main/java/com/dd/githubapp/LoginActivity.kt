@@ -1,5 +1,6 @@
 package com.dd.githubapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.dd.githubapp.common.ext.otherwise
@@ -53,6 +54,9 @@ class LoginActivity : BaseActivity<LoginPresenter>() {
 
     fun onLoginSuccess() {
         toast("登录成功")
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     fun onDataInit(name: String, password: String) {
