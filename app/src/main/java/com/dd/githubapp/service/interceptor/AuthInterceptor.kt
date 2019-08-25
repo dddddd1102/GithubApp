@@ -25,7 +25,7 @@ class AuthInterceptor : Interceptor {
                             "Basic " + Base64.encodeToString(userCredentials.toByteArray(), Base64.NO_WRAP)
                         header("Authorization", auth)
                     }
-                    AccountManager.isLoggedin() -> {
+                    AccountManager.isLogin() -> {
                         val auth = "Token " + AccountManager.token
                         header("Authorization", auth)
                     }

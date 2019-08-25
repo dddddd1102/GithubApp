@@ -36,7 +36,7 @@ object AccountManager {
 
     private var userJson by pref("")
 
-    var currentUser: User? = null
+    private var currentUser: User? = null
         get() {
             if (field == null && userJson.isNotEmpty()) {
                 field = Gson().fromJson<User>(userJson)
@@ -66,7 +66,7 @@ object AccountManager {
         }
     }
 
-    fun isLoggedin(): Boolean = token.isNotEmpty()
+    fun isLogin(): Boolean = token.isNotEmpty()
 
     fun login(): Observable<Unit> = AuthService.createAuthorization(AuthorizationReq())
         .doOnNext {
