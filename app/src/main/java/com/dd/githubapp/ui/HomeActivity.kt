@@ -72,14 +72,10 @@ class HomeActivity : AppCompatActivity() {
     private fun initNavigationEvent() {
         nav_view.doOnLayoutAvailable {
             lltNavHeader.onClick {
-                goUser()
+                
+
             }
         }
     }
 
-    private fun goUser() {
-        val intent = Intent(this, UserActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        startActivity(intent)
-    }
 }
