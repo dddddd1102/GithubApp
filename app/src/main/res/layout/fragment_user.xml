@@ -74,4 +74,34 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_user"
             tools:text="daidong" />
 
+    <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_location"
+            android:gravity="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_email"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+            tools:text="chongqing" />
+
+    <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableStart="@drawable/ic_email"
+            android:gravity="center"
+            android:layout_marginStart="4dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/tv_location"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nickname"
+            tools:text="ddongisme@gmail.com" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

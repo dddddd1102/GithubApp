@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.dd.githubapp.R
 import com.dd.githubapp.model.AccountManager
 import kotlinx.android.synthetic.main.fragment_user.*
+import org.jetbrains.anko.support.v4.ctx
 
 class UserFragment : Fragment() {
 
@@ -25,18 +26,23 @@ class UserFragment : Fragment() {
         userViewModel =
             ViewModelProviders.of(this).get(UserViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_user, container, false)
-        userViewModel.text.observe(this, Observer {
+
+        userViewModel.user.observe(this, Observer {
+
+            context?.let { ctx ->
+                Glide.with(ctx).load(it.avatarUrl).into(iv_avatar)
+            }
+            tv_user.text = it.login
+            tv_nickname.text = it.name ?: ""
+            tv_location.text = it.location
+            it.email?.let {
+                tv_email.text = it
+            } ?: kotlin.run {
+                tv_email.visibility = View.GONE
+            }
 
         })
 
-        AccountManager.currentUser?.let {
-
-//            context?.let { ctx -> Glide.with(ctx).load(it.avatarUrl).into(iv_avatar) }
-//            tv_user.text = it.login
-//            tv_nickname.text = it.name ?: ""
-
-
-        }
 
 
         return root
