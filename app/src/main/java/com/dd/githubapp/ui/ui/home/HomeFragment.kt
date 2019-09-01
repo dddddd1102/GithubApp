@@ -25,7 +25,6 @@ class HomeFragment : Fragment() {
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         homeViewModel.text.observe(this, Observer {
-            text_home.text = it
         })
         return root
     }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/cardview_default_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_vertical_margin">
+
+        <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                android:id="@+id/iv_owner_avatar"
+                android:layout_width="@dimen/repo_owner_image_size"
+                android:layout_height="@dimen/repo_owner_image_size"
+                android:src="@mipmap/test"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:qmui_is_circle="true" />
+
+        <TextView
+                android:id="@+id/tv_repo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:text="GithubApp"
+                android:textColor="@color/color_dark_green"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_owner_avatar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_repo_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_repo_point"
+                android:gravity="center"
+                android:text="Kotlin"
+                android:textColor="@color/qmui_config_color_50_pure_black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_repo_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="A Kotlin`s learning demo."
+                android:textColor="@color/qmui_config_color_60_pure_black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_repo_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_repo_name" />
+
+        <TextView
+                android:id="@+id/tv_repo_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_repo_star"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/qmui_config_color_60_pure_black"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_repo_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_repo_description" />
+
+        <TextView
+                android:id="@+id/tv_repo_forks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_repo_fork"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/qmui_config_color_60_pure_black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_repo_description" />
+
+        <TextView
+                android:id="@+id/tv_repo_owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_repo_user"
+                android:gravity="center"
+                android:text="dddddd1102"
+                android:textColor="@color/qmui_config_color_60_pure_black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_repo_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

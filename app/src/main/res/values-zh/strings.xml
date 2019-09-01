@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GithubApp</string>
+    <string name="user_follow">Follow</string>
+    <string name="user_sponsor">Sponsor</string>
+    <string name="login_in">登录</string>
+    <string name="login_username">用户名</string>
+    <string name="login_password">密码</string>
+    <string name="login_require_username">用户名不能为空！</string>
+    <string name="login_require_password">密码不能为空！</string>
+
+    <string name="splash_version">© 2019 daidong</string>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">设置</string>
+
+    <string name="menu_user">用户</string>
+    <string name="menu_home">主页</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_about">关于</string>
+
+    <!-- About -->
+    <string name="about_author">作者</string>
+    <string name="about_author_link">dddddd1102</string>
+    <string name="about_open_source">开源库</string>
+    <string name="about_version_code">版本号</string>
+    <string name="about_share">分享给朋友</string>
+    <string name="about_share_wechat">分享到微信</string>
+    <string name="about_share_friend_circle">分享到朋友圈</string>
+    <string name="about_share_weibo">分享到微博</string>
+    <string name="about_share_copy">复制到剪贴板</string>
+</resources>
