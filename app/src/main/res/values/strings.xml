@@ -26,4 +26,15 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="menu_about">About</string>
+
+    <!-- About -->
+    <string name="about_author">作者</string>
+    <string name="about_author_link">dddddd1102</string>
+    <string name="about_open_source">开源库</string>
+    <string name="about_version_code">版本号</string>
+    <string name="about_share">分享给朋友</string>
+    <string name="about_share_wechat">分享到微信</string>
+    <string name="about_share_friend_circle">分享到朋友圈</string>
+    <string name="about_share_weibo">分享到微博</string>
+    <string name="about_share_copy">复制到剪贴板</string>
 </resources>
