@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class ToolsViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is tools Fragment"
+    private val _tools = MutableLiveData<String>().apply {
+        value = ""
     }
-    val text: LiveData<String> = _text
+    val tools: LiveData<String> = _tools
 }

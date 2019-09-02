@@ -38,4 +38,13 @@
     <string name="about_share_friend_circle">分享到朋友圈</string>
     <string name="about_share_weibo">分享到微博</string>
     <string name="about_share_copy">复制到剪贴板</string>
+
+    <!-- Tools -->
+    <string name="tools_theme">主题</string>
+    <string name="tools_language">语言</string>
+    <string name="tools_language_zh">中文</string>
+    <string name="tools_language_en">English</string>
+    <string name="tools_language_title">请选择语言</string>
+    <string name="tools_theme_title">请选择主题</string>
+    <string name="tools_sure">确定</string>
 </resources>
