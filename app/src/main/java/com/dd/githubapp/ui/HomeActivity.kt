@@ -37,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_user, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_home, R.id.nav_user, R.id.nav_star, R.id.nav_trending,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send, R.id.nav_about
             ), drawer_layout
         )
@@ -72,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
     private fun initNavigationEvent() {
         nav_view.doOnLayoutAvailable {
             lltNavHeader.onClick {
-                
+
 
             }
         }
