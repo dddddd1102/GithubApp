@@ -22,7 +22,7 @@ class AboutFragment : Fragment() {
 
     private lateinit var aboutViewModel: AboutViewModel
 
-    private lateinit var itemDialog: QMUIDialog;
+    private lateinit var itemDialog: QMUIDialog
 
     private lateinit var bottomSheet: QMUIBottomSheet
 
